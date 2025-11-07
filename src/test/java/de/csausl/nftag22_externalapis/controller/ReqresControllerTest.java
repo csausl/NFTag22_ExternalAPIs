@@ -33,37 +33,40 @@ class ReqresControllerTest {
         mockServer.expect(requestTo("https://reqres.in/api/users"))
                         .andExpect(method(HttpMethod.GET))
                                 .andRespond(withSuccess("""
-                                               {
-                                               "page": 2,
-                                               "per_page": 6,
-                                               "total": 12,
-                                               "total_pages": 2,
-                                               "data": [
-                                                   {
-                                                       "id": 7,
-                                                       "email": "michael.lawson@reqres.in",
-                                                       "first_name": "Michael",
-                                                       "last_name": "Lawson",
-                                                       "avatar": "https://reqres.in/img/faces/7-image.jpg"
-                                                   }
-                                               ],
-                                               "support": {
-                                                   "url": "https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral",
-                                                   "text": "Tired of writing endless social media content? Let Content Caddy generate it for you."
-                                               }
+                                              {
+                                                                  "page": 2,
+                                                                  "per_page": 6,
+                                                                  "total": 12,
+                                                                  "total_pages": 2,
+                                                                  "data": [
+                                                                      {
+                                                                          "id": 7,
+                                                                          "email": "michael.lawson@reqres.in",
+                                                                          "first_name": "Michael",
+                                                                          "last_name": "Lawson",
+                                                                          "avatar": "https://reqres.in/img/faces/7-image.jpg"
+                                                                      }
+                                                                  ],
+                                                                  "support": {
+                                                                      "url": "https://contentcaddy.io/?utm_source=reqres&utm_medium=json&utm_campaign=referral",
+                                                                      "text": "Tired of writing endless social media content? Let Content Caddy generate it for you."
+                                                                  }
+                                                              }
                         """, MediaType.APPLICATION_JSON));
 
         // WHEN&THEN
         mockMvc.perform(MockMvcRequestBuilders.get("/api/users"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json("""
-                               [{
-                                                       "id": 7,
-                                                       "email": "michael.lawson@reqres.in",
-                                                       "first_name": "Michael",
-                                                       "last_name": "Lawson",
-                                                       "avatar": "https://reqres.in/img/faces/7-image.jpg"
-                               }]
+                               [
+                                                                      {
+                                                                          "id": 7,
+                                                                          "email": "michael.lawson@reqres.in",
+                                                                          "first_name": "Michael",
+                                                                          "last_name": "Lawson",
+                                                                          "avatar": "https://reqres.in/img/faces/7-image.jpg"
+                                                                      }
+                                                                  ]
                                """));
     }
 }
