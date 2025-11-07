@@ -3,9 +3,11 @@ package de.csausl.nftag22_externalapis.service;
 import de.csausl.nftag22_externalapis.model.*;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+
 import org.springframework.web.client.RestClient;
 
 import java.util.List;
+
 
 @Service
 public class ReqresService {
@@ -30,12 +32,22 @@ public class ReqresService {
 
 
     public ResponseNewUser createUser(RequestNewUser newUser){
-        return restClient.post()
+        System.out.println(newUser);
+        return  restClient.post()
                 .uri("/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                //.header("x-api-key", "reqres-free-v1")
                 .body(newUser)
                 .retrieve()
                 .body(ResponseNewUser.class);
+    }
+
+    public UserRegisterResponse registerUser(UserRegister newUser){
+        System.out.println(newUser);
+        return  restClient.post()
+                .uri("/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body((newUser))
+                .retrieve()
+                .body(UserRegisterResponse.class);
     }
 }

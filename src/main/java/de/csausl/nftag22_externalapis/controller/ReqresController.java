@@ -1,8 +1,6 @@
 package de.csausl.nftag22_externalapis.controller;
 
-import de.csausl.nftag22_externalapis.model.RequestNewUser;
-import de.csausl.nftag22_externalapis.model.ResponseNewUser;
-import de.csausl.nftag22_externalapis.model.UserData;
+import de.csausl.nftag22_externalapis.model.*;
 import de.csausl.nftag22_externalapis.service.ReqresService;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,5 +22,11 @@ public class ReqresController {
     @PostMapping("/users")
     public ResponseNewUser createUser(@RequestBody RequestNewUser data){
         return reqresService.createUser(data);
+    }
+
+    @PostMapping("/users/register")
+    public UserRegisterResponse registerUser(@RequestBody UserRegister data){
+        System.out.println(data);
+        return reqresService.registerUser(data);
     }
 }
