@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/reqres")
+@RequestMapping("/api")
 public class ReqresController {
     private final ReqresService reqresService;
     public ReqresController(ReqresService reqresService) {
